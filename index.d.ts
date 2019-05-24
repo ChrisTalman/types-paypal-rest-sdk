@@ -2,17 +2,24 @@ declare module 'paypal-rest-sdk'
 {
 	export namespace core
 	{
-		export class LiveEnvironment
+		export class PayPalEnvironment
+		{
+			public readonly clientId: string;
+			public readonly clientSecret: string;
+			public readonly baseUrl: string;
+			public readonly webUrl: string;
+		}
+		export class LiveEnvironment extends PayPalEnvironment
 		{
 			constructor(clientId: string, clientSecret: string);
 		}
-		export class SandboxEnvironment
+		export class SandboxEnvironment extends PayPalEnvironment
 		{
 			constructor(clientId: string, clientSecret: string);
 		}
 		export class PayPalHttpClient
 		{
-			constructor(environment: LiveEnvironment | SandboxEnvironment);
+			constructor(environment: PayPalEnvironment);
 			execute(request: PayPalHttpClientRequest);
 		}
 		export interface PayPalHttpClientRequest
