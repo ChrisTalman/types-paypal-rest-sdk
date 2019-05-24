@@ -22,22 +22,19 @@ declare module 'paypal-rest-sdk'
 			constructor(environment: PayPalEnvironment);
 			execute(request: PayPalHttpClientRequest);
 		}
-		export interface PayPalHttpClientRequest
+		export abstract class PayPalHttpClientRequest
 		{
-			path: string;
-			verb: string;
-			body: string;
-			headers:
-			{
-				[name: string]: string;
-			};
+			public readonly path: string;
+			public readonly verb: string;
+			public readonly body: string;
+			public readonly headers: { [name: string]: string; };
 		}
 	}
 	export namespace v1
 	{
 		export namespace webhooks
 		{
-			export class WebhookVerifySignatureRequest
+			export class WebhookVerifySignatureRequest extends core.PayPalHttpClientRequest
 			{
 				constructor(parameters: WebhookVerifySignatureParameters);
 			}
