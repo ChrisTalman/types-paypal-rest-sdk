@@ -50,4 +50,41 @@ declare module 'paypal-rest-sdk'
 			}
 		}
 	}
+	export namespace Api
+	{
+		export namespace Billing
+		{
+			export namespace Subscriptions
+			{
+				export namespace Methods
+				{
+					export namespace Post
+					{
+						export interface Body
+						{
+							plan_id: string;
+							start_time?: string;
+							quantity?: string;
+							auto_renewal?: boolean;
+						}
+						export interface ApplicationContext
+						{
+							brand_name?: string;
+							locale?: string;
+							shipping_preference?: 'GET_FROM_FILE' | 'NO_SHIPPING' | 'SET_PROVIDED_ADDRESS';
+							user_action?: 'CONTINUE' | 'SUBSCRIBE_NOW';
+							payment_method?: ApplicationContextPaymentMethod;
+							return_url?: string;
+							cancel_url?: string;
+						}
+						export interface ApplicationContextPaymentMethod
+						{
+							payer_selected?: 'PAYPAL' | 'PAYPAL_CREDIT';
+							payee_preferred?: 'UNRESTRICTED' | 'IMMEDIATE_PAYMENT_REQUIRED';
+						}
+					}
+				}
+			}
+		}
+	}
 }
