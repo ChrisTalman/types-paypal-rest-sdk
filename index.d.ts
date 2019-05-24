@@ -26,8 +26,8 @@ declare module 'paypal-rest-sdk'
 		{
 			public readonly path: string;
 			public readonly verb: string;
-			public readonly body: string;
 			public readonly headers: { [name: string]: string; };
+			public body: string;
 		}
 	}
 	export namespace v1
