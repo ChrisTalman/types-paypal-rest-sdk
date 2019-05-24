@@ -85,6 +85,97 @@ declare module 'paypal-rest-sdk'
 					}
 				}
 			}
+			export namespace Plans
+			{
+				export namespace Methods
+				{
+					export namespace Post
+					{
+						export interface Body
+						{
+							product_id: string;
+							name: string;
+							status?: 'CREATED' | 'INACTIVE' | 'ACTIVE';
+							description?: string;
+							billing_cycles: BillingCycles;
+						}
+						export interface BillingCycles extends Array<BillingCycle> {}
+						export interface BillingCycle
+						{
+							frequency: BillingCycleFrequency;
+							tenure_type: 'REGULAR' | 'TRIAL';
+							sequence: number;
+							total_cycles?: number;
+							payment_preferences?: BillingCyclePaymentPreferences;
+						}
+						export interface BillingCycleFrequency
+						{
+							interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
+							interval_count?: number;
+						}
+						export interface BillingCyclePaymentPreferences
+						{
+							auto_bill_outstanding?: boolean;
+							setup_fee?: BillingCyclePaymentPreferencesSetupFee;
+							setup_fee_failure_action?: 'CONTINUE' | 'CANCEL';
+							payment_failure_threshold?: number;
+						}
+						export interface BillingCyclePaymentPreferencesSetupFee
+						{
+							currency_code: string;
+							value: string;
+						}
+					}
+				}
+			}
+		}
+		export namespace Catalogs
+		{
+			export namespace Products
+			{
+				export namespace Methods
+				{
+					export namespace Post
+					{
+						export interface Body
+						{
+							id?: string;
+							name: string;
+							description?: string;
+							type: 'PHYSICAL' | 'DIGITAL' | 'SERVICE';
+							category?: 'SOFTWARE';
+							image_url?: string;
+							home_url?: string;
+						}
+						export interface BillingCycles extends Array<BillingCycle> {}
+						export interface BillingCycle
+						{
+							frequency: BillingCycleFrequency;
+							tenure_type: 'REGULAR' | 'TRIAL';
+							sequence: number;
+							total_cycles?: number;
+							payment_preferences?: BillingCyclePaymentPreferences;
+						}
+						export interface BillingCycleFrequency
+						{
+							interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
+							interval_count?: number;
+						}
+						export interface BillingCyclePaymentPreferences
+						{
+							auto_bill_outstanding?: boolean;
+							setup_fee?: BillingCyclePaymentPreferencesSetupFee;
+							setup_fee_failure_action?: 'CONTINUE' | 'CANCEL';
+							payment_failure_threshold?: number;
+						}
+						export interface BillingCyclePaymentPreferencesSetupFee
+						{
+							currency_code: string;
+							value: string;
+						}
+					}
+				}
+			}
 		}
 	}
 }
