@@ -64,6 +64,7 @@ declare module 'paypal-rest-sdk'
 						start_time?: string;
 						quantity?: string;
 						auto_renewal?: boolean;
+						application_context: ApplicationContext;
 					}
 					export interface ApplicationContext
 					{
@@ -72,8 +73,8 @@ declare module 'paypal-rest-sdk'
 						shipping_preference?: 'GET_FROM_FILE' | 'NO_SHIPPING' | 'SET_PROVIDED_ADDRESS';
 						user_action?: 'CONTINUE' | 'SUBSCRIBE_NOW';
 						payment_method?: ApplicationContextPaymentMethod;
-						return_url?: string;
-						cancel_url?: string;
+						return_url: string;
+						cancel_url: string;
 					}
 					export interface ApplicationContextPaymentMethod
 					{
