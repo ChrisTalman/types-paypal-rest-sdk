@@ -90,6 +90,33 @@ declare module 'paypal-rest-sdk'
 							reason: string;
 						}
 					}
+					export interface Details
+					{
+						id: string;
+						plan_id: string;
+						start_time: string;
+						quantity: string;
+						shipping_amount:
+						{
+							currency_code: string;
+							value: string;
+						};
+						subscriber:
+						{
+							name:
+							{
+      							given_name: string;
+      							surname: string;
+    						};
+    						email_address: string;
+						};
+						auto_renewal: boolean;
+						create_time: string;
+						update_time: string;
+						status: 'APPROVAL_PENDING' | 'APPROVED' | 'ACTIVE' | 'SUSPENDED' | 'CANCELLED' | 'EXPIRED';
+						status_update_time: string;
+						status_change_note?: string;
+					}
 				}
 			}
 			export namespace Plans
