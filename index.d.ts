@@ -20,7 +20,7 @@ declare module 'paypal-rest-sdk'
 		export class PayPalHttpClient
 		{
 			constructor(environment: PayPalEnvironment);
-			execute(request: PayPalHttpClientRequest): Promise<any>;
+			execute <GenericResult extends object> (request: PayPalHttpClientRequest): Promise<ExecuteResponse<GenericResult>>;
 		}
 		export abstract class PayPalHttpClientRequest
 		{
@@ -28,6 +28,12 @@ declare module 'paypal-rest-sdk'
 			public readonly verb: string;
 			public readonly headers: { [name: string]: string; };
 			public body: object;
+		}
+		export interface ExecuteResponse <GenericResult extends object>
+		{
+			statusCode: number;
+			headers: { [name: string]: string };
+			result: GenericResult;
 		}
 	}
 	export namespace v1
