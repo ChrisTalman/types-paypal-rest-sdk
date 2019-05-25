@@ -56,75 +56,79 @@ declare module 'paypal-rest-sdk'
 		{
 			export namespace Subscriptions
 			{
-				export namespace Methods
+				export namespace Create
 				{
-					export namespace Post
+					export interface Body
+					{
+						plan_id: string;
+						start_time?: string;
+						quantity?: string;
+						auto_renewal?: boolean;
+					}
+					export interface ApplicationContext
+					{
+						brand_name?: string;
+						locale?: string;
+						shipping_preference?: 'GET_FROM_FILE' | 'NO_SHIPPING' | 'SET_PROVIDED_ADDRESS';
+						user_action?: 'CONTINUE' | 'SUBSCRIBE_NOW';
+						payment_method?: ApplicationContextPaymentMethod;
+						return_url?: string;
+						cancel_url?: string;
+					}
+					export interface ApplicationContextPaymentMethod
+					{
+						payer_selected?: 'PAYPAL' | 'PAYPAL_CREDIT';
+						payee_preferred?: 'UNRESTRICTED' | 'IMMEDIATE_PAYMENT_REQUIRED';
+					}
+				}
+				export namespace Subscription
+				{
+					export namespace Cancel
 					{
 						export interface Body
 						{
-							plan_id: string;
-							start_time?: string;
-							quantity?: string;
-							auto_renewal?: boolean;
-						}
-						export interface ApplicationContext
-						{
-							brand_name?: string;
-							locale?: string;
-							shipping_preference?: 'GET_FROM_FILE' | 'NO_SHIPPING' | 'SET_PROVIDED_ADDRESS';
-							user_action?: 'CONTINUE' | 'SUBSCRIBE_NOW';
-							payment_method?: ApplicationContextPaymentMethod;
-							return_url?: string;
-							cancel_url?: string;
-						}
-						export interface ApplicationContextPaymentMethod
-						{
-							payer_selected?: 'PAYPAL' | 'PAYPAL_CREDIT';
-							payee_preferred?: 'UNRESTRICTED' | 'IMMEDIATE_PAYMENT_REQUIRED';
+							reason: string;
 						}
 					}
 				}
 			}
 			export namespace Plans
 			{
-				export namespace Methods
+				export namespace Create
 				{
-					export namespace Post
+					export interface Body
 					{
-						export interface Body
-						{
-							product_id: string;
-							name: string;
-							status?: 'CREATED' | 'INACTIVE' | 'ACTIVE';
-							description?: string;
-							billing_cycles: BillingCycles;
-						}
-						export interface BillingCycles extends Array<BillingCycle> {}
-						export interface BillingCycle
-						{
-							frequency: BillingCycleFrequency;
-							tenure_type: 'REGULAR' | 'TRIAL';
-							sequence: number;
-							total_cycles?: number;
-							payment_preferences?: BillingCyclePaymentPreferences;
-						}
-						export interface BillingCycleFrequency
-						{
-							interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
-							interval_count?: number;
-						}
-						export interface BillingCyclePaymentPreferences
-						{
-							auto_bill_outstanding?: boolean;
-							setup_fee?: BillingCyclePaymentPreferencesSetupFee;
-							setup_fee_failure_action?: 'CONTINUE' | 'CANCEL';
-							payment_failure_threshold?: number;
-						}
-						export interface BillingCyclePaymentPreferencesSetupFee
-						{
-							currency_code: string;
-							value: string;
-						}
+						product_id: string;
+						name: string;
+						status?: 'CREATED' | 'INACTIVE' | 'ACTIVE';
+						description?: string;
+						billing_cycles: BillingCycles;
+					}
+					export interface BillingCycles extends Array<BillingCycle> {}
+					export interface BillingCycle
+					{
+						frequency: BillingCycleFrequency;
+						tenure_type: 'REGULAR' | 'TRIAL';
+						sequence: number;
+						total_cycles?: number;
+						payment_preferences?: BillingCyclePaymentPreferences;
+					}
+					export interface BillingCycleFrequency
+					{
+						interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
+						interval_count?: number;
+					}
+					export interface BillingCyclePaymentPreferences
+					{
+						auto_bill_outstanding?: boolean;
+						setup_fee?: BillingCyclePaymentPreferencesSetupFee;
+						setup_fee_failure_action?: 'CONTINUE' | 'CANCEL';
+						payment_failure_threshold?: number;
+					}
+					export interface BillingCyclePaymentPreferencesSetupFee
+					{
+						currency_code: string;
+						value: string;
 					}
 				}
 			}
@@ -133,46 +137,43 @@ declare module 'paypal-rest-sdk'
 		{
 			export namespace Products
 			{
-				export namespace Methods
+				export namespace Create
 				{
-					export namespace Post
+					export interface Body
 					{
-						export interface Body
-						{
-							id?: string;
-							name: string;
-							description?: string;
-							type: 'PHYSICAL' | 'DIGITAL' | 'SERVICE';
-							category?: 'SOFTWARE';
-							image_url?: string;
-							home_url?: string;
-						}
-						export interface BillingCycles extends Array<BillingCycle> {}
-						export interface BillingCycle
-						{
-							frequency: BillingCycleFrequency;
-							tenure_type: 'REGULAR' | 'TRIAL';
-							sequence: number;
-							total_cycles?: number;
-							payment_preferences?: BillingCyclePaymentPreferences;
-						}
-						export interface BillingCycleFrequency
-						{
-							interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
-							interval_count?: number;
-						}
-						export interface BillingCyclePaymentPreferences
-						{
-							auto_bill_outstanding?: boolean;
-							setup_fee?: BillingCyclePaymentPreferencesSetupFee;
-							setup_fee_failure_action?: 'CONTINUE' | 'CANCEL';
-							payment_failure_threshold?: number;
-						}
-						export interface BillingCyclePaymentPreferencesSetupFee
-						{
-							currency_code: string;
-							value: string;
-						}
+						id?: string;
+						name: string;
+						description?: string;
+						type: 'PHYSICAL' | 'DIGITAL' | 'SERVICE';
+						category?: 'SOFTWARE';
+						image_url?: string;
+						home_url?: string;
+					}
+					export interface BillingCycles extends Array<BillingCycle> {}
+					export interface BillingCycle
+					{
+						frequency: BillingCycleFrequency;
+						tenure_type: 'REGULAR' | 'TRIAL';
+						sequence: number;
+						total_cycles?: number;
+						payment_preferences?: BillingCyclePaymentPreferences;
+					}
+					export interface BillingCycleFrequency
+					{
+						interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
+						interval_count?: number;
+					}
+					export interface BillingCyclePaymentPreferences
+					{
+						auto_bill_outstanding?: boolean;
+						setup_fee?: BillingCyclePaymentPreferencesSetupFee;
+						setup_fee_failure_action?: 'CONTINUE' | 'CANCEL';
+						payment_failure_threshold?: number;
+					}
+					export interface BillingCyclePaymentPreferencesSetupFee
+					{
+						currency_code: string;
+						value: string;
 					}
 				}
 			}
