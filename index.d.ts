@@ -20,7 +20,7 @@ declare module 'paypal-rest-sdk'
 		export class PayPalHttpClient
 		{
 			constructor(environment: PayPalEnvironment);
-			execute(request: PayPalHttpClientRequest);
+			execute(request: PayPalHttpClientRequest): Promise<any>;
 		}
 		export abstract class PayPalHttpClientRequest
 		{
