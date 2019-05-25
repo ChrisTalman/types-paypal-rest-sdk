@@ -213,4 +213,15 @@ declare module 'paypal-rest-sdk'
 			}
 		}
 	}
+	export interface WebhookEventData <GenericResource extends object>
+	{
+		id: string;
+		create_time: string;
+		resource_type: string;
+		event_type: string;
+		summary: string;
+		event_version: string;
+		resource_version: string;
+		resource: GenericResource;
+	}
 }
