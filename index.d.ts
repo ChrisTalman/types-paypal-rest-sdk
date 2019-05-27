@@ -197,6 +197,41 @@ declare module 'paypal-rest-sdk'
 						value: string;
 					}
 				}
+				export interface Details
+				{
+					id: string;
+					product_id: string;
+					name: string;
+					status: 'CREATED' | 'INACTIVE' | 'ACTIVE';
+					description?: string;
+					billing_cycles: BillingCycles;
+				}
+				export interface BillingCycles extends Array<BillingCycle> {}
+				export interface BillingCycle
+				{
+					pricing_scheme: BillingCyclePricingScheme;
+					frequency: BillingCycleFrequency;
+					tenure_type: 'REGULAR' | 'TRIAL';
+					sequence: number;
+					total_cycles: number;
+				}
+				export interface BillingCyclePricingScheme
+				{
+					version: number;
+					fixed_price: BillingCyclePricingSchemeFixedPrice;
+					create_time: string;
+					update_time: string;
+				}
+				export interface BillingCyclePricingSchemeFixedPrice
+				{
+					currency_code: string;
+					value: string;
+				}
+				export interface BillingCycleFrequency
+				{
+					interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
+					interval_count: number;
+				}
 			}
 		}
 		export namespace Catalogs
