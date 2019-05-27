@@ -103,26 +103,58 @@ declare module 'paypal-rest-sdk'
 						plan_id: string;
 						start_time: string;
 						quantity: string;
-						shipping_amount:
-						{
-							currency_code: string;
-							value: string;
-						};
-						subscriber:
-						{
-							name:
-							{
-      							given_name: string;
-      							surname: string;
-    						};
-    						email_address: string;
-						};
+						shipping_amount: ShippingAmount;
+						subscriber: Subscriber;
+						billing_info: BillingInfo;
 						auto_renewal: boolean;
 						create_time: string;
 						update_time: string;
 						status: 'APPROVAL_PENDING' | 'APPROVED' | 'ACTIVE' | 'SUSPENDED' | 'CANCELLED' | 'EXPIRED';
 						status_update_time: string;
 						status_change_note?: string;
+					}
+					export interface ShippingAmount
+					{
+						currency_code: string;
+						value: string;
+					}
+					export interface Subscriber
+					{
+						name: SubscriberName;
+						email_address: string;
+					}
+					export interface SubscriberName
+					{
+						given_name: string;
+						surname: string;
+					}
+					export interface BillingInfo
+					{
+						outstanding_balance: BillingInfoOutstandingBalance;
+						cycle_executions: CycleExecutions;
+						last_payment: BillingInfoLastPayment;
+						next_billing_time: string;
+						final_payment_time: string;
+						failed_payments_count: number;
+					}
+					export interface BillingInfoOutstandingBalance
+					{
+						currency_code: string;
+						value: string;
+					}
+					export interface BillingInfoLastPayment
+					{
+						amount: string;
+						time: string;
+					}
+					export interface CycleExecutions extends Array<CycleExecution> {}
+					export interface CycleExecution
+					{
+						tenure_type: 'REGULAR' | 'TRIAL';
+						sequence: number;
+						cycles_completed: number;
+						cycles_remaining: number;
+						current_pricing_scheme_version: number;
 					}
 				}
 			}
