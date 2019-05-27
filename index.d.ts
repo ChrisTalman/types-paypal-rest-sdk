@@ -205,6 +205,11 @@ declare module 'paypal-rest-sdk'
 					status: 'CREATED' | 'INACTIVE' | 'ACTIVE';
 					description?: string;
 					billing_cycles: BillingCycles;
+					payment_preferences: PaymentPreferences;
+					taxes: Taxes;
+					quantity_supported: boolean;
+					create_time: string;
+					update_time: string;
 				}
 				export interface BillingCycles extends Array<BillingCycle> {}
 				export interface BillingCycle
@@ -231,6 +236,23 @@ declare module 'paypal-rest-sdk'
 				{
 					interval_unit: 'DAY' | 'WEEK' | 'SEMI_MONTH' | 'MONTH' | 'YEAR';
 					interval_count: number;
+				}
+				export interface PaymentPreferences
+				{
+					auto_bill_outstanding: boolean;
+					setup_fee: PaymentPreferencesSetupFee;
+					setup_fee_failure_action: 'CONTINUE' | 'CANCEL';
+					payment_failure_threshold: number;
+				}
+				export interface PaymentPreferencesSetupFee
+				{
+					currency_code: string;
+					value: string;
+				}
+				export interface Taxes
+				{
+					percentage: string;
+					inclusive: boolean;
 				}
 			}
 		}
