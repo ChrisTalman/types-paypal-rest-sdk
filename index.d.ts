@@ -42,17 +42,7 @@ declare module 'paypal-rest-sdk'
 		{
 			export class WebhookVerifySignatureRequest extends core.PayPalHttpClientRequest
 			{
-				constructor(parameters: WebhookVerifySignatureParameters);
-			}
-			export interface WebhookVerifySignatureParameters
-			{
-				transmission_id: string;
-				transmission_time: string;
-				cert_url: string;
-				auth_algo: string;
-				transmission_sig: string;
-				webhook_id: string;
-				webhook_event: object;
+				constructor();
 			}
 		}
 	}
@@ -298,6 +288,22 @@ declare module 'paypal-rest-sdk'
 						currency_code: string;
 						value: string;
 					}
+				}
+			}
+		}
+		export namespace Webhooks
+		{
+			export namespace Verify
+			{
+				export interface Body
+				{
+					transmission_id: string;
+					transmission_time: string;
+					cert_url: string;
+					auth_algo: string;
+					transmission_sig: string;
+					webhook_id: string;
+					webhook_event: object;
 				}
 			}
 		}
