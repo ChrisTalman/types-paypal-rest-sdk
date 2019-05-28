@@ -102,6 +102,7 @@ declare module 'paypal-rest-sdk'
 						status: 'APPROVAL_PENDING' | 'APPROVED' | 'ACTIVE' | 'SUSPENDED' | 'CANCELLED' | 'EXPIRED';
 						status_update_time: string;
 						status_change_note?: string;
+						links: Links;
 					}
 					export interface ShippingAmount
 					{
@@ -145,6 +146,14 @@ declare module 'paypal-rest-sdk'
 						cycles_completed: number;
 						cycles_remaining: number;
 						current_pricing_scheme_version: number;
+					}
+					export interface Links extends Array<Link> {}
+					export type Link = ApproveLink;
+					export interface ApproveLink
+					{
+						href: string;
+						rel: 'approve';
+						method: 'GET';
 					}
 				}
 			}
