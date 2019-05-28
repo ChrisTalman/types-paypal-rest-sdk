@@ -305,7 +305,7 @@ declare module 'paypal-rest-sdk'
 					webhook_id: string;
 					webhook_event: object;
 				}
-				export interface Response
+				export interface Result
 				{
 					verification_status: 'SUCCESS' | 'FAILURE';
 				}
