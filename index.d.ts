@@ -61,6 +61,7 @@ declare module 'paypal-rest-sdk'
 						quantity?: string;
 						auto_renewal?: boolean;
 						application_context: ApplicationContext;
+						subscriber?: PartialDeep<Subscriptions.Subscription.Subscriber>;
 					}
 					export interface ApplicationContext
 					{
@@ -333,3 +334,12 @@ declare module 'paypal-rest-sdk'
 		resource: GenericResource;
 	}
 }
+
+/** Makes all properties optional in interface and subinterfaces. */
+type PartialDeep <T> =
+{
+	[P in keyof T]?:
+		T[P] extends (infer U)[] ? PartialDeep<U>[] :
+		T[P] extends object ? PartialDeep<T[P]> :
+		T[P];
+};
