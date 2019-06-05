@@ -301,6 +301,28 @@ declare module 'paypal-rest-sdk'
 				}
 			}
 		}
+		export namespace Payments
+		{
+			export namespace Sales
+			{
+				export interface Details
+				{
+					id: string;
+					amount: Amount;
+					billing_agreement_id: string;
+					state: 'COMPLETED' | 'PARTIALLY_REFUNDED' | 'PENDING' | 'REFUNDED' | 'DENIED';
+					reason_code?: 'CHARGEBACK' | 'GUARANTEE' | 'BUYER_COMPLAINT' | 'REFUND' | 'UNCONFIRMED_SHIPPING_ADDRESS' | 'ECHECK' | 'INTERNATIONAL_WITHDRAWAL' | 'RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION' | 'PAYMENT_REVIEW' | 'REGULATORY_REVIEW' | 'UNILATERAL' | 'VERIFICATION_REQUIRED' | 'TRANSACTION_APPROVED_AWAITING_FUNDING';
+					payment_mode?: 'INSTANT_TRANSFER' | 'MANUAL_BANK_TRANSFER' | 'DELAYED_TRANSFER' | 'ECHECK';
+					create_time: string;
+					update_time: string;
+				}
+				export interface Amount
+				{
+					currency: string;
+					total: string;
+				}
+			}
+		}
 		export namespace Webhooks
 		{
 			export namespace Verify
