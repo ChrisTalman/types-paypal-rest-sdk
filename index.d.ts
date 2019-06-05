@@ -310,7 +310,7 @@ declare module 'paypal-rest-sdk'
 					id: string;
 					amount: Amount;
 					billing_agreement_id: string;
-					state: 'COMPLETED' | 'PARTIALLY_REFUNDED' | 'PENDING' | 'REFUNDED' | 'DENIED';
+					state: 'completed' | 'partially_refunded' | 'pending' | 'refunded' | 'denied';
 					reason_code?: 'CHARGEBACK' | 'GUARANTEE' | 'BUYER_COMPLAINT' | 'REFUND' | 'UNCONFIRMED_SHIPPING_ADDRESS' | 'ECHECK' | 'INTERNATIONAL_WITHDRAWAL' | 'RECEIVING_PREFERENCE_MANDATES_MANUAL_ACTION' | 'PAYMENT_REVIEW' | 'REGULATORY_REVIEW' | 'UNILATERAL' | 'VERIFICATION_REQUIRED' | 'TRANSACTION_APPROVED_AWAITING_FUNDING';
 					payment_mode?: 'INSTANT_TRANSFER' | 'MANUAL_BANK_TRANSFER' | 'DELAYED_TRANSFER' | 'ECHECK';
 					create_time: string;
