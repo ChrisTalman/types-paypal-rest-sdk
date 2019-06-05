@@ -96,10 +96,10 @@ declare module 'paypal-rest-sdk'
 						quantity: string;
 						shipping_amount: ShippingAmount;
 						subscriber: Subscriber;
-						billing_info: BillingInfo;
+						billing_info?: BillingInfo;
 						auto_renewal: boolean;
 						create_time: string;
-						update_time: string;
+						update_time?: string;
 						status: 'APPROVAL_PENDING' | 'APPROVED' | 'ACTIVE' | 'SUSPENDED' | 'CANCELLED' | 'EXPIRED';
 						status_update_time: string;
 						status_change_note?: string;
