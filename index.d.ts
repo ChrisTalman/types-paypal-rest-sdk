@@ -367,6 +367,25 @@ declare module 'paypal-rest-sdk'
 		resource_version: string;
 		resource: GenericResource;
 	}
+	export type ErrorResponse = StandardError | IdentityError;
+	export interface StandardError
+	{
+		name: 'UNPROCESSABLE_ENTITY';
+		message: string;
+		debug_id?: string;
+		details?: StandardErrorDetails;
+	}
+	export interface StandardErrorDetails extends Array<StandardErrorDetail> {}
+	export interface StandardErrorDetail
+	{
+		issue: 'SUBSCRIPTION_STATUS_INVALID';
+		description: string;
+	}
+	export interface IdentityError
+	{
+		error: string;
+		error_description: string;
+	}
 }
 
 /** Makes all properties optional in interface and subinterfaces. */
