@@ -305,6 +305,18 @@ declare module 'paypal-rest-sdk'
 		{
 			export namespace Sales
 			{
+				export namespace Refund
+				{
+					export interface Body
+					{
+						amount: Amount;
+					}
+					export interface Amount
+					{
+						currency: string;
+						total: string;
+					}
+				}
 				export interface Details
 				{
 					id: string;
