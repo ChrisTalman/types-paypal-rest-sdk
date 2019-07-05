@@ -19,6 +19,7 @@ declare module 'paypal-rest-sdk'
 		}
 		export class PayPalHttpClient
 		{
+			public readonly environment: PayPalEnvironment;
 			constructor(environment: PayPalEnvironment);
 			execute <GenericResult extends object> (request: PayPalHttpClientRequest): Promise<ExecuteResponse<GenericResult>>;
 		}
